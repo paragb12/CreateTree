@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CreateTree.Models.Parent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Raw(TempData["insertmsg"])
+@Html.Raw(TempData["editmsg"])
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nodeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parentNodeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nodeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parentNodeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.nodeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.nodeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.nodeId })
+        </td>
+    </tr>
+}
+
+</table>
